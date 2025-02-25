@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Manajemen Keuangan Sederhana</title>
+    <script>
+        // Fungsi untuk menghitung total pengeluaran
+        function hitungTotalPengeluaran(pengeluaranBulanan, pengeluaranTahunan) {
+            return pengeluaranBulanan + pengeluaranTahunan;
+        }
+
+        // Fungsi untuk membandingkan pengeluaran bulanan dan tahunan
+        function bandingkanPengeluaran(pengeluaranBulanan, pengeluaranTahunan) {
+            if (pengeluaranBulanan > pengeluaranTahunan / 12) {
+                return "Pengeluaran bulanan lebih besar dari rata-rata pengeluaran tahunan.";
+            } else {
+                return "Pengeluaran bulanan lebih kecil atau sama dengan rata-rata pengeluaran tahunan.";
+            }
+        }
+
+        // Fungsi untuk menghitung rata-rata pengeluaran bulanan
+        function hitungRataRataPengeluaran(pengeluaranTahunan) {
+            return pengeluaranTahunan / 12;
+        }
+
+        // Fungsi untuk menampilkan hasil di halaman
+        function tampilkanHasil() {
+            let pengeluaranBulanan = parseFloat(document.getElementById("pengeluaranBulanan").value);
+            let pengeluaranTahunan = parseFloat(document.getElementById("pengeluaranTahunan").value);
+
+            let totalPengeluaran = hitungTotalPengeluaran(pengeluaranBulanan, pengeluaranTahunan);
+            let pesanPerbandingan = bandingkanPengeluaran(pengeluaranBulanan, pengeluaranTahunan);
+            let rataRataPengeluaran = hitungRataRataPengeluaran(pengeluaranTahunan);
+
+            document.getElementById("totalPengeluaran").innerText = "Total Pengeluaran: " + totalPengeluaran;
+            document.getElementById("pesanPerbandingan").innerText = pesanPerbandingan;
+            document.getElementById("rataRataPengeluaran").innerText = "Rata-rata Pengeluaran Bulanan: " + rataRataPengeluaran;
+        }
+    </script>
+</head>
+<body>
+    <h1>Aplikasi Manajemen Keuangan Sederhana</h1>
+    <div>
+        <label for="pengeluaranBulanan">Pengeluaran Bulanan:</label>
+        <input type="number" id="pengeluaranBulanan" step="0.01"><br><br>
+        <label for="pengeluaranTahunan">Pengeluaran Tahunan:</label>
+        <input type="number" id="pengeluaranTahunan" step="0.01"><br><br>
+        <button onclick="tampilkanHasil()">Hitung</button>
+    </div>
+    <div>
+        <p id="totalPengeluaran"></p>
+        <p id="pesanPerbandingan"></p>
+        <p id="rataRataPengeluaran"></p>
+    </div>
+</body>
+</html>
